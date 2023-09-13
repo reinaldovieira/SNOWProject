@@ -48,3 +48,6 @@ FindingAddress.prototype = Object.extendsObject(AbstractAjaxProcessor, {
 
     type: 'FindingAddress'
 });
+
+//IMPORTANTE: na primeira função "buscarCEP", é criada uma variavel chamada 'endereco' para invocar a função interna _chamarEndereco com o conteúdo da resposta que pegasse o objeto "zip", referente ao CEP 
+//Em seguinda, dei um return para invocar o valor de 'endereço'.
