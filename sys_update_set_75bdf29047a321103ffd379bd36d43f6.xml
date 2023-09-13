@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2023-09-13 18:34:55">
+<sys_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<base_update_set display_value=""/>
+<completed_by display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</completed_by>
+<completed_on>2023-09-13 18:34:47</completed_on>
+<description>Criação de um item de catálogo com os campos:
+
+- Meu IP (Preenchido manualmente) (Client Script on change)
+- Campo CEP (Deve ser preenchido automaticamente com o Retorno do (MEU IP)) (Client Script on change)
+- Popular os Campos RUA, BAIRRO, UF e CIDADE (Vindos do Retorno da chamada do correio SOAP)
+ 
+API (Rest) para buscar as Informações baseado no IP informado no client:
+https://ipstack.com/
+
+SOAP para Correios:
+https://apps.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl
+
+Método: Consulta CEP
+
+O script include deve conter uma função para buscar as Informações da primeira API. Outra função para buscar as Informações dos correios. Lembrando que tudo isso deve retornar um objeto para o client (Tratar os dados no Server).
+
+(Detalhe: A função dos correios é interna e só é chamada quando o Retorno da primeira função estiver retornando o CEP corretamente. Funções internas iniciam com _XXXXXX: function)</description>
+<install_date/>
+<installed_from/>
+<is_default>false</is_default>
+<merged_to display_value=""/>
+<name>AOOP: Desafio 1 - Consulta do CEP</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_sys_id display_value=""/>
+<state>complete</state>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-06-16 20:12:43</sys_created_on>
+<sys_id>75bdf29047a321103ffd379bd36d43f6</sys_id>
+<sys_mod_count>2</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 18:34:47</sys_updated_on>
+</sys_update_set>
+</unload>

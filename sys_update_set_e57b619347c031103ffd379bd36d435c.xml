@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2023-09-13 18:43:47">
+<sys_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<base_update_set display_value=""/>
+<completed_by display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</completed_by>
+<completed_on>2023-09-13 18:42:01</completed_on>
+<description>Dando continuidade ao desafio anterior segue a próxima parte do desafio:
+
+RITM deverá ser designada para o grupo Help Desk
+
+Tasks deverão ser designadas para os grupos
+- Task 1 – IT Finance CAB
+- Task 2 – Procurement
+- Task 3 – Problem Solving
+- Task 4 – Database
+- Task 5 – Hardware
+SLA da RITM – 120 horas das 09 às 17h – Respeitando apenas feriados do dia 25/12 e 01/01
+
+OLA das Tasks
+- Task 1 – 18 horas das 09 às 17h – Respeitando apenas feriados do dia 25/12 e 01/01
+- Task 2 – 24 horas das 09 às 17h – Respeitando apenas feriados do dia 25/12 e 01/01
+- Task 3 – 36 horas das 09 às 17h – Respeitando apenas feriados do dia 25/12 e 01/01
+- Task 4 – 116 horas das 09 às 17h – Respeitando apenas feriados do dia 25/12 e 01/01
+- Task 5 – 61 horas das 09 às 17h – Respeitando apenas feriados do dia 25/12 e 01/01
+
+* Quando o status da tarefa for pending automaticamente todas as tarefas/ritm deverão ser alteradas para o status pending, o sla/ola deverá ser pausado nesse momento nas tarefas e RITM;
+* Quando o status da tarefa for Work in Progress e anteriormente era pending automaticamente todas as tarefas/ritm deverão ser alteradas para o status work in progress, o sla/ola deverá ser retomado nesse momento nas tarefas e ritm;
+* Quando uma tarefa for encerrada o ola da mesma deve ser encerrado;
+* Quando todas as tarefas forem encerradas o SLA da ritm deve ser encerrado;
+
+Observações: NECESSÁRIO A CONCLUSÃO DA PARTE 1, entrega via update set
+
+Um desafio maior é utilizando a API de anexos para atividade de RITM https://aoopclouddemo6.service-now.com/api/srete/desafioanexos/getNF  não é necessário autenticação (será considerado um ponto extra, lembrando que nem todos os arquivos retornados são válidos).</description>
+<install_date/>
+<installed_from/>
+<is_default>false</is_default>
+<merged_to display_value=""/>
+<name>AOOP: Desafio 3 - Anexo de NF Cidades</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_sys_id display_value=""/>
+<state>complete</state>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-07-20 18:26:31</sys_created_on>
+<sys_id>e57b619347c031103ffd379bd36d435c</sys_id>
+<sys_mod_count>2</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 18:42:01</sys_updated_on>
+</sys_update_set>
+</unload>
