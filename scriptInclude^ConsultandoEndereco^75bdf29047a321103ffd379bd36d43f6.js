@@ -29,6 +29,9 @@ FindingAddress.prototype = Object.extendsObject(AbstractAjaxProcessor, {
             var responseBody = response.getBody();
             var status = response.getStatusCode();
 
+            // A SOAP message retorna um arquivo parecido com XML. Depois isso, analisamos (parse), montamos um objeto e pegamos nó por nó com os campos que queremos. 
+            // Portanto, abaixo do var status, incrementamos o código da seguinte forma:
+
             var xmlDoc = new XMLDocument2(); //objeto que ajuda a manipular um XML, analisando e extraindo dados de uma string
             xmlDoc.parseXML(responseBody); //analisa resposta do teste da SOAP Message function
             var objeto = {};
