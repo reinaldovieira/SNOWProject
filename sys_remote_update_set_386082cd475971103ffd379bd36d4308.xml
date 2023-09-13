@@ -1,0 +1,1428 @@
+<?xml version="1.0" encoding="UTF-8"?><unload unload_date="2023-09-13 23:29:53">
+<sys_remote_update_set action="INSERT_OR_UPDATE">
+<application display_value="Global">global</application>
+<application_name>Global</application_name>
+<application_scope>global</application_scope>
+<application_version/>
+<collisions/>
+<commit_date/>
+<deleted/>
+<description>Desafio – Despesas das cidades do estado de São Paulo – PARTE 1
+
+Todas as APIS não possuem autenticação.
+
+1. Formulário:
+* Criar um item de catálogo – Nome: Despesas das cidades do estado de São Paulo;
+* Criar um campo onde o usuário poderá escolher um mês do ano de 2018 (Esse dado será usado futuramente na API);
+* Criar um campo para o usuário selecionar a cidade que quer consultar, as cidades deverão ser as fornecidas pela API (https://transparencia.tce.sp.gov.br/api/JSON/municipios);
+* Criar um multirow para receber as informações da api de despesas (API https://transparencia.tce.sp.gov.br/api/json/despesas/cidade/2020/mes) (ex: https://transparencia.tce.sp.gov.br/api/json/despesas/santos/2020/01)
+1.1 Orgão
+1.2 Evento
+1.3 Núm. Empenho
+1.4 ID Fornecedor
+1.5 Nome Fornecedor
+1.6 Data de Emissão da Despesa
+1.7 Valor da Despesa
+
+Os campos do multi-row deverão conter apenas dados da integração e não permitir a alteração dos dados.
+
+2. Regras de Negócios:
+* Na api de despesas trazer somente o que for relacionado a cidade e mês selecionados pelo usuário e preencher as variáveis do multi-row;
+* Trazer somente as cinco maiores despesas da cidade;
+* Sempre que a cidade for alterada e o multi-row estiver preenchido apagar os dados anteriores;
+* Sempre que o mês for alterado limpar a cidade e o multirow caso estejam preenchidos
+
+Entregas esperadas:
+
+Update set
+- Descrever as soluções abaixo:
+- Carregar as cidades; *Utilizar a imaginação
+- Preenchimento do multi-row a partir do WebService;
+- Regras de client script.
+ 
+Observações:
+
+Documentação da API: 
+https://transparencia.tce.sp.gov.br/apis
+
+Documentação do MROW (Multirow): 
+https://docs.servicenow.com/bundle/newyork-it-service-management/page/product/service-catalog-management/concept/c_ServiceCatalogVariableSets.html
+
+Vídeo – recomendo fortemente seguir esse cara pois ele é um dos MVPs da SN: https://www.youtube.com/watch?v=JZ341t0iVtY&amp;t=243s
+
+Por último, o MROW é um array de objetos
+
+MROW == Array
+Posição 1 é a linha 1 - Possui um objeto que seus atributos são os campos do daquela linha;
+Posição 2 é a linha 2 - Possui um objeto que seus atributos são os campos do daquela linha;
+Posição 3 é a linha 3 - Possui um objeto que seus atributos são os campos do daquela linha;</description>
+<inserted/>
+<name>AOOP: Desafio 2 - Mrow Cidades</name>
+<origin_sys_id/>
+<parent display_value=""/>
+<release_date/>
+<remote_base_update_set display_value=""/>
+<remote_parent_id/>
+<remote_sys_id>459aae30477321103ffd379bd36d43d4</remote_sys_id>
+<state>loaded</state>
+<summary/>
+<sys_class_name>sys_remote_update_set</sys_class_name>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>386082cd475971103ffd379bd36d4308</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<update_set display_value=""/>
+<update_source display_value=""/>
+<updated/>
+</sys_remote_update_set>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_764a3e7547b721103ffd379bd36d43e6</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;valor_despesa&lt;/name&gt;&lt;order&gt;700&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Valor da Despesa&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:04:25&lt;/sys_created_on&gt;&lt;sys_id&gt;764a3e7547b721103ffd379bd36d43e6&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Valor da Despesa&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_764a3e7547b721103ffd379bd36d43e6&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:21&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=764a3e7547b721103ffd379bd36d43e6"/&gt;&lt;fx_price action="delete_multiple" query="id=764a3e7547b721103ffd379bd36d43e6"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;764a3e7547b721103ffd379bd36d43e6&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:04:25&lt;/sys_created_on&gt;&lt;sys_id&gt;8b5afa7547b721103ffd379bd36d4325&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:04:25&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;764a3e7547b721103ffd379bd36d43e6&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:04:25&lt;/sys_created_on&gt;&lt;sys_id&gt;cf5afa7547b721103ffd379bd36d4324&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:04:25&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1473754168</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>306082cd475971103ffd379bd36d430a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18926953a470000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Valor da Despesa</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>516d27925573211055e440fb94ebe041</update_guid>
+<update_guid_history>516d27925573211055e440fb94ebe041:-1473754168,4f5afa7550b7211033724a731069ec2a:261303961</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_c91581ee473721103ffd379bd36d4360</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>800</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:39</sys_created_on><sys_id>c91581ee473721103ffd379bd36d4360</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Agosto</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_c91581ee473721103ffd379bd36d4360</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:31</sys_updated_on><text>Agosto</text><value>8</value></question_choice><fx_price action="delete_multiple" query="id=c91581ee473721103ffd379bd36d4360"/></record_update>]]></payload>
+<payload_hash>1160472144</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>306082cd475971103ffd379bd36d430d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b91a2130000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Agosto</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>a77c24ba13332110d85cf3e4c8269dfc</update_guid>
+<update_guid_history>a77c24ba13332110d85cf3e4c8269dfc:1160472144,3e380922fab72110927cea6246af4676:-1979710350,cc254922cf77211003722c9559e0add9:1160472144</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_be6e08ee47b321103ffd379bd36d43ee</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 17:28:38</sys_created_on><sys_id>be6e08ee47b321103ffd379bd36d43ee</sys_id><sys_mod_count>0</sys_mod_count><sys_name>DespCidadesSP.catalog</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="DespCidadesSP">b26e4c2247b321103ffd379bd36d43d2</sys_security_acl><sys_update_name>sys_security_acl_role_be6e08ee47b321103ffd379bd36d43ee</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 17:28:38</sys_updated_on><sys_user_role display_value="catalog" name="catalog">e098ecf6c0a80165002aaec84d906014</sys_user_role><transaction_id/></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>2018279845</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>34608281479971103ffd379bd36d4368</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189271953b30000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table>DespCidadesSP</table>
+<target_name>DespCidadesSP.catalog</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>f26e08eeacb321109e1b9feeaddf62f1</update_guid>
+<update_guid_history>f26e08eeacb321109e1b9feeaddf62f1:2018279845</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_25d87a7147b721103ffd379bd36d4314</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;id_fornecedor&lt;/name&gt;&lt;order&gt;400&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;ID Fornecedor&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:01:16&lt;/sys_created_on&gt;&lt;sys_id&gt;25d87a7147b721103ffd379bd36d4314&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;ID Fornecedor&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_25d87a7147b721103ffd379bd36d4314&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:20&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=25d87a7147b721103ffd379bd36d4314"/&gt;&lt;fx_price action="delete_multiple" query="id=25d87a7147b721103ffd379bd36d4314"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;25d87a7147b721103ffd379bd36d4314&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:01:16&lt;/sys_created_on&gt;&lt;sys_id&gt;45a9f27547b721103ffd379bd36d43da&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:01:16&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;25d87a7147b721103ffd379bd36d4314&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:01:16&lt;/sys_created_on&gt;&lt;sys_id&gt;89a9f27547b721103ffd379bd36d43d9&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:01:16&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1189764720</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>346082cd475971103ffd379bd36d4309</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189269538370000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>ID Fornecedor</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>4d6d27920b732110090dfeec3699f823</update_guid>
+<update_guid_history>4d6d27920b732110090dfeec3699f823:1189764720,49a9f275a0b7211076bb9d0b303bd1de:-13798837</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_8fb481ee473721103ffd379bd36d435b</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>100</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:26:14</sys_created_on><sys_id>8fb481ee473721103ffd379bd36d435b</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Janeiro</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_8fb481ee473721103ffd379bd36d435b</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:04</sys_updated_on><text>Janeiro</text><value>1</value></question_choice><fx_price action="delete_multiple" query="id=8fb481ee473721103ffd379bd36d435b"/></record_update>]]></payload>
+<payload_hash>202694534</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>346082cd475971103ffd379bd36d430c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b9138ee0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Janeiro</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>0d6c607aef3321107958821560f6b130</update_guid>
+<update_guid_history>0d6c607aef3321107958821560f6b130:202694534,f4284922cdb72110e076f5d1116eb0ba:-1343058866,93c4412219b721107d9fedf937e932a3:202694534</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>DELETE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_parameters_216a056647b721103ffd379bd36d430c</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="DELETE"><name>cidade</name><rest_message_function display_value="Default GET">505989e247b721103ffd379bd36d4341</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:50:41</sys_created_on><sys_id>216a056647b721103ffd379bd36d430c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>cidade</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_parameters_216a056647b721103ffd379bd36d430c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:50:41</sys_updated_on><type>string</type><value/></sys_rest_message_fn_parameters></record_update>]]></payload>
+<payload_hash>156533711</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>346082cd475971103ffd379bd36d430f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189280d0fc20000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>cidade</target_name>
+<type>Variable Substitutions</type>
+<update_domain>global</update_domain>
+<update_guid>a65b05a61cb72110d8e33b9047ff1f44</update_guid>
+<update_guid_history>a65b05a61cb72110d8e33b9047ff1f44:156533711,e96a056687b72110d5935e961edbe50d:-1732692389</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_7febb752477321103ffd379bd36d43c3</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.CidadesSP&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;CidadesSP&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var CidadesSP = Class.create();
+CidadesSP.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+
+    consultaSP: function() {
+        try {
+            var r = new sn_ws.RESTMessageV2('Municípios', 'Default GET');
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+            var arr = JSON.parse(responseBody);
+        } catch (ex) { //construtor Javascript
+            var message = ex.message;
+        }
+		
+		return JSON.stringify(arr); //retorna como objeto
+
+    },
+
+    type: 'CidadesSP'
+});
+
+//try &amp; catch é muito usado para pegar erro no Javascript]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-05 17:28:37&lt;/sys_created_on&gt;&lt;sys_id&gt;7febb752477321103ffd379bd36d43c3&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;CidadesSP&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_7febb752477321103ffd379bd36d43c3&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 21:46:30&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-183863435</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>38608281479971103ffd379bd36d4367</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189280569ea0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>CidadesSP</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>58798526c0b72110965897707deb5daf</update_guid>
+<update_guid_history>58798526c0b72110965897707deb5daf:-183863435,0321fcea063721106f757ab88799c045:-552864843,b4ec646a6a3721104e8b868033d36d7d:1894874636,ba6e08eedeb3211011f293bee78026f2:140282259</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_2c05412247b721103ffd379bd36d43af</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>500</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:18</sys_created_on><sys_id>2c05412247b721103ffd379bd36d43af</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Maio</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_2c05412247b721103ffd379bd36d43af</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:19</sys_updated_on><text>Maio</text><value>5</value></question_choice><fx_price action="delete_multiple" query="id=2c05412247b721103ffd379bd36d43af"/></record_update>]]></payload>
+<payload_hash>-2010487354</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>386082cd475971103ffd379bd36d430b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b9171620000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Maio</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>687c24bad433211038446ef95201d7a1</update_guid>
+<update_guid_history>687c24bad433211038446ef95201d7a1:-2010487354,e43805e2a6b721108c2abfad3627406b:1071768470,36054522dfb72110328b11c9c5ec9949:-2010487354</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_f596b943477321103ffd379bd36d43ef</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message"><sys_rest_message action="INSERT_OR_UPDATE"><access>public</access><authentication_type>no_authentication</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><description/><name>Despesas Multirow</name><oauth2_profile/><protocol_name/><rest_endpoint>https://transparencia.tce.sp.gov.br/api/json/despesas/cidade/2018/mes</rest_endpoint><sys_class_name>sys_rest_message</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-07 14:29:14</sys_created_on><sys_id>f596b943477321103ffd379bd36d43ef</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Despesas Multirow</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_f596b943477321103ffd379bd36d43ef</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-07 14:49:25</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mutual_auth>false</use_mutual_auth></sys_rest_message></record_update>]]></payload>
+<payload_hash>1830430177</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>386082cd475971103ffd379bd36d430e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930d448940000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Despesas Multirow</target_name>
+<type>REST Message</type>
+<update_domain>global</update_domain>
+<update_guid>0e2d3d07f7732110d69a118c0b466701</update_guid>
+<update_guid_history>0e2d3d07f7732110d69a118c0b466701:1830430177,fa0bbd071f73211009d13bfb502de852:67895111,c898fd87eb332110c69b4fe8e8ba357e:-1234760456,8a88b5c38a732110d281f8eab8fe4e82:-1279451673</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_c1d97abd477721103ffd379bd36d43b9</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;nome_fornecedor&lt;/name&gt;&lt;order&gt;500&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Nome do Fornecedor&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:03:14&lt;/sys_created_on&gt;&lt;sys_id&gt;c1d97abd477721103ffd379bd36d43b9&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Nome do Fornecedor&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_c1d97abd477721103ffd379bd36d43b9&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:20&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=c1d97abd477721103ffd379bd36d43b9"/&gt;&lt;fx_price action="delete_multiple" query="id=c1d97abd477721103ffd379bd36d43b9"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;c1d97abd477721103ffd379bd36d43b9&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:03:14&lt;/sys_created_on&gt;&lt;sys_id&gt;391aba7547b721103ffd379bd36d4335&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:03:14&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;c1d97abd477721103ffd379bd36d43b9&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:03:14&lt;/sys_created_on&gt;&lt;sys_id&gt;7d1aba7547b721103ffd379bd36d4334&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:03:14&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-313905573</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>3c6082cd475971103ffd379bd36d430a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189269538ec0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Nome do Fornecedor</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>596d279244732110c93f19eae7c9df2d</update_guid>
+<update_guid_history>596d279244732110c93f19eae7c9df2d:-313905573,711aba7554b72110e2093d8dcd06333a:-1714442352</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sc_cat_item_catalog_ecb1a5b5477321103ffd379bd36d43be</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_catalog"><sc_cat_item_catalog action="INSERT_OR_UPDATE"><sc_cat_item display_value="Despesas das cidades do estado de São Paulo">77df1d35477321103ffd379bd36d43a4</sc_cat_item><sc_catalog display_value="Service Catalog">e0d08b13c3330100c8b837659bba8fb4</sc_catalog><sys_class_name>sc_cat_item_catalog</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>ecb1a5b5477321103ffd379bd36d43be</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Service Catalog.Despesas das cidades do estado de São Paulo</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sc_cat_item_catalog_ecb1a5b5477321103ffd379bd36d43be</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 15:37:02</sys_updated_on></sc_cat_item_catalog></record_update>]]></payload>
+<payload_hash>419384914</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>3c6082cd475971103ffd379bd36d430d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891c66717b0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Service Catalog.Despesas das cidades do estado de São Paulo</target_name>
+<type>Catalog Items Catalog</type>
+<update_domain>global</update_domain>
+<update_guid>f8b1a5b5ff7321106d6df857f7b80ec2</update_guid>
+<update_guid_history>f8b1a5b5ff7321106d6df857f7b80ec2:419384914</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_role_b074868f477321103ffd379bd36d4301</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role"><sys_security_acl_role action="INSERT_OR_UPDATE"><sys_class_name>sys_security_acl_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-07 15:21:18</sys_created_on><sys_id>b074868f477321103ffd379bd36d4301</sys_id><sys_mod_count>0</sys_mod_count><sys_name>DespesasMrow.catalog</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_security_acl display_value="DespesasMrow">b874468f477321103ffd379bd36d43fd</sys_security_acl><sys_update_name>sys_security_acl_role_b074868f477321103ffd379bd36d4301</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-07 15:21:18</sys_updated_on><sys_user_role display_value="catalog" name="catalog">e098ecf6c0a80165002aaec84d906014</sys_user_role><transaction_id/></sys_security_acl_role></record_update>]]></payload>
+<payload_hash>-1000225211</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>70608281479971103ffd379bd36d4368</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930f1779d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table>DespesasMrow</table>
+<target_name>DespesasMrow.catalog</target_name>
+<type>Access Roles</type>
+<update_domain>global</update_domain>
+<update_guid>f474868f1c732110e44d5208b733ad03</update_guid>
+<update_guid_history>f474868f1c732110e44d5208b733ad03:-1000225211</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>io_set_item_8942b675477721103ffd379bd36d4391</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="io_set_item"><io_set_item action="INSERT_OR_UPDATE"><order>300</order><sc_cat_item display_value="Despesas das cidades do estado de São Paulo">77df1d35477321103ffd379bd36d43a4</sc_cat_item><sys_class_name>io_set_item</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 21:29:03</sys_created_on><sys_id>8942b675477721103ffd379bd36d4391</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Informações de Despesas.Despesas das cidades do estado de São Paulo</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>io_set_item_8942b675477721103ffd379bd36d4391</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 22:39:27</sys_updated_on><variable_set display_value="Informações de Despesas">e822f6bd477721103ffd379bd36d438a</variable_set></io_set_item></record_update>]]></payload>
+<payload_hash>-466766831</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>706082cd475971103ffd379bd36d4309</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891de92b6a0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Informações de Despesas.Despesas das cidades do estado de São Paulo</target_name>
+<type>Catalog Variable Set</type>
+<update_domain>global</update_domain>
+<update_guid>9062cf3d23b7211018e8ae5814ff92be</update_guid>
+<update_guid_history>9062cf3d23b7211018e8ae5814ff92be:-466766831,c5427abdcc772110814a9b5a5d073f83:-269393453</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_4835c52247b721103ffd379bd36d439c</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>1200</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:28:07</sys_created_on><sys_id>4835c52247b721103ffd379bd36d439c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Dezembro</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_4835c52247b721103ffd379bd36d439c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:28:07</sys_updated_on><text>Dezembro</text><value>12</value></question_choice><fx_price action="delete_multiple" query="id=4835c52247b721103ffd379bd36d439c"/></record_update>]]></payload>
+<payload_hash>-372072376</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>706082cd475971103ffd379bd36d430c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18927f492e30000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Dezembro</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>f6354122fcb7211033ba35301ba615b8</update_guid>
+<update_guid_history>f6354122fcb7211033ba35301ba615b8:-372072376</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_8e88bd83473321103ffd379bd36d43bb</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Default GET</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>Despesas Multirow [ Default GET ]</qualified_name><rest_endpoint>https://transparencia.tce.sp.gov.br/api/json/despesas/${cidade}/2018/${mes}</rest_endpoint><rest_message display_value="Despesas Multirow">f596b943477321103ffd379bd36d43ef</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-07 14:29:14</sys_created_on><sys_id>8e88bd83473321103ffd379bd36d43bb</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Default GET</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_8e88bd83473321103ffd379bd36d43bb</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-07 14:40:21</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+<payload_hash>-1345071577</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>706082cd475971103ffd379bd36d430f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930cbfbaa0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Default GET</target_name>
+<type>HTTP Method</type>
+<update_domain>global</update_domain>
+<update_guid>891b79cfdd33211073ac9f4dc7f159a6</update_guid>
+<update_guid_history>891b79cfdd33211073ac9f4dc7f159a6:-1345071577,c288b5c3cc732110667138f2d2411a81:2021090776</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_script_include_37718a8b477321103ffd379bd36d4317</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;global.DespesasMrow&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;DespesasMrow&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var DespesasMrow = Class.create();
+DespesasMrow.prototype = Object.extendsObject(AbstractAjaxProcessor, {
+
+    puxarDados: function() {
+        try {
+            var mes = this.getParameter('sysparm_mes');
+            var cidade = this.getParameter('sysparm_cidade');
+
+            var r = new sn_ws.RESTMessageV2('Despesas Multirow', 'Default GET');
+            r.setStringParameterNoEscape('mes', mes);
+            r.setStringParameterNoEscape('cidade', cidade);
+
+            var response = r.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+            var arr = JSON.parse(responseBody);
+			var arrayOrdenado = this._ordenaArray(arr);
+
+        } catch (ex) {
+            var message = ex.message;
+        }
+
+        return JSON.stringify(arrayOrdenado);
+    },
+	
+	//colchete + chave é para quando queremos falar sobre um array de objetos
+
+    _ordenaArray: function(arr) {      
+        arr.sort(function(a, b) { //ordenar um array de objetos
+
+            if (parseInt(a.vl_despesa) &gt; parseInt(b.vl_despesa)) {
+                return -1;
+				//coloca o A na frente do B
+            }
+
+            if (parseInt(a.vl_despesa) &lt; parseInt (b.vl_despesa)) {
+                return 1;
+				//coloca o B na frente do A
+            }
+
+        });
+		
+		return arr;
+
+    },
+
+    type: 'DespesasMrow'
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-07 15:21:17&lt;/sys_created_on&gt;&lt;sys_id&gt;37718a8b477321103ffd379bd36d4317&lt;/sys_id&gt;&lt;sys_mod_count&gt;10&lt;/sys_mod_count&gt;&lt;sys_name&gt;DespesasMrow&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_37718a8b477321103ffd379bd36d4317&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-07 20:37:36&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1460475631</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>74608281479971103ffd379bd36d4367</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18932130e4a0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>DespesasMrow</target_name>
+<type>Script Include</type>
+<update_domain>global</update_domain>
+<update_guid>1adcc74f7b77211064d37648e30e16e5</update_guid>
+<update_guid_history>1adcc74f7b77211064d37648e30e16e5:-1460475631,c1cbc70fa17721101fc460fcd666820a:-1801298325,94aa030fee772110c9751ff3ed998d79:-1857225714,9e9a0b0f757721108914b0f53fbd982f:676061806,9f89870f467721101dc3d4be2d17fdf3:797782075,8579470f34772110e9c4adb54152df58:79079093,07098b8b057721100914d1d8d7c23cc8:-1598784303,e09f3e438277211031ce9a40e6c13c63:-1402579419,00bd36cf323721105b20c7973b8f96cc:1622212217,ee2296875eb3211039f5f3c7a07d8775:-418745087,bc74868f9f732110ad69bb6e5c81f304:-1457639974</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_15c4cde6477721103ffd379bd36d4314</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>200</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:26:21</sys_created_on><sys_id>15c4cde6477721103ffd379bd36d4314</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Fevereiro</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_15c4cde6477721103ffd379bd36d4314</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:08</sys_updated_on><text>Fevereiro</text><value>2</value></question_choice><fx_price action="delete_multiple" query="id=15c4cde6477721103ffd379bd36d4314"/></record_update>]]></payload>
+<payload_hash>808813574</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>746082cd475971103ffd379bd36d430b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b9145cf0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Fevereiro</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>b16c24ba26332110e0109a1a99edc79b</update_guid>
+<update_guid_history>b16c24ba26332110e0109a1a99edc79b:808813574,56284922e9b72110652d8a33c6c100bf:842759472,45d449222a772110d2150a594ca4a7a3:808813574</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_c908437d47b721103ffd379bd36d4374</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message"><sys_rest_message action="INSERT_OR_UPDATE"><access>public</access><authentication_type>no_authentication</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><description/><name>Municípios</name><oauth2_profile/><protocol_name/><rest_endpoint>https://transparencia.tce.sp.gov.br/api/json/municipios</rest_endpoint><sys_class_name>sys_rest_message</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 23:07:01</sys_created_on><sys_id>c908437d47b721103ffd379bd36d4374</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Municípios</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_c908437d47b721103ffd379bd36d4374</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 23:07:01</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mutual_auth>false</use_mutual_auth></sys_rest_message></record_update>]]></payload>
+<payload_hash>-1495694080</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>746082cd475971103ffd379bd36d430e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891e02684e0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Municípios</target_name>
+<type>REST Message</type>
+<update_domain>global</update_domain>
+<update_guid>80b84fb116f7211065402b9c51904241</update_guid>
+<update_guid_history>80b84fb116f7211065402b9c51904241:-1495694080</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_a4857a7147b721103ffd379bd36d430e</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;evento&lt;/name&gt;&lt;order&gt;200&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Evento&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:43:24&lt;/sys_created_on&gt;&lt;sys_id&gt;a4857a7147b721103ffd379bd36d430e&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Evento&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_a4857a7147b721103ffd379bd36d430e&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:20&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=a4857a7147b721103ffd379bd36d430e"/&gt;&lt;fx_price action="delete_multiple" query="id=a4857a7147b721103ffd379bd36d430e"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;a4857a7147b721103ffd379bd36d430e&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:43:24&lt;/sys_created_on&gt;&lt;sys_id&gt;5b857a7147b721103ffd379bd36d432a&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 21:43:24&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;a4857a7147b721103ffd379bd36d430e&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:43:24&lt;/sys_created_on&gt;&lt;sys_id&gt;9f857a7147b721103ffd379bd36d4329&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 21:43:24&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>162670766</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>786082cd475971103ffd379bd36d430a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189269536b00000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Evento</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>8d6d2792b2732110fcda3fd795efd803</update_guid>
+<update_guid_history>8d6d2792b2732110fcda3fd795efd803:162670766,e3857a7182b7211023ea1f149944f02e:187252513</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sc_cat_item_77df1d35477321103ffd379bd36d43a4</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item"><sc_cat_item action="INSERT_OR_UPDATE"><access_type>restricted</access_type><active>true</active><availability>on_desktop</availability><billable>false</billable><category/><checked_out/><cost>0</cost><custom_cart/><delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan><delivery_plan_script/><delivery_time>1970-01-03 00:00:00</delivery_time><description/><display_price_property>non_zero</display_price_property><entitlement_script/><flow_designer_flow/><fulfillment_automation_level>unspecified</fulfillment_automation_level><group/><hide_sp>false</hide_sp><icon/><ignore_price>true</ignore_price><image/><location/><mandatory_attachment>false</mandatory_attachment><meta/><mobile_hide_price>false</mobile_hide_price><mobile_picture/><mobile_picture_type>use_desktop_picture</mobile_picture_type><model/><name>Despesas das cidades do estado de São Paulo</name><no_attachment_v2>false</no_attachment_v2><no_cart>false</no_cart><no_cart_v2>false</no_cart_v2><no_delivery_time_v2>false</no_delivery_time_v2><no_order>false</no_order><no_order_now>false</no_order_now><no_proceed_checkout>false</no_proceed_checkout><no_quantity>false</no_quantity><no_quantity_v2>false</no_quantity_v2><no_search>false</no_search><no_wishlist_v2>false</no_wishlist_v2><omit_price>false</omit_price><order>0</order><ordered_item_link/><owner display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</owner><picture/><preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=77df1d35477321103ffd379bd36d43a4&amp;sysparm_preview=true", "summary");</preview><price>0</price><published_ref/><recurring_frequency/><recurring_price>0</recurring_price><request_method/><roles/><sc_catalogs>e0d08b13c3330100c8b837659bba8fb4</sc_catalogs><sc_ic_item_staging/><sc_ic_version/><sc_template/><short_description/><show_variable_help_on_load>false</show_variable_help_on_load><start_closed>false</start_closed><state/><sys_class_name>sc_cat_item</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>77df1d35477321103ffd379bd36d43a4</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Despesas das cidades do estado de São Paulo</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sc_cat_item_77df1d35477321103ffd379bd36d43a4</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 15:37:03</sys_updated_on><taxonomy_topic/><template/><template_manager_roles/><type>item</type><use_sc_layout>true</use_sc_layout><vendor/><visible_bundle>true</visible_bundle><visible_guide>true</visible_guide><visible_standalone>true</visible_standalone><workflow/></sc_cat_item><sys_translated_text action="delete_multiple" query="documentkey=77df1d35477321103ffd379bd36d43a4"/><fx_price action="delete_multiple" query="id=77df1d35477321103ffd379bd36d43a4"/><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="BRL">BRL</currency><field>price</field><id>77df1d35477321103ffd379bd36d43a4</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>64b1ed35473321103ffd379bd36d4309</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 15:37:02</sys_updated_on><table>sc_cat_item</table><type>calculated</type></fx_price><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>recurring_price</field><id>77df1d35477321103ffd379bd36d43a4</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>6cb1ed35473321103ffd379bd36d430a</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 15:37:02</sys_updated_on><table>sc_cat_item</table><type>calculated</type></fx_price></record_update>]]></payload>
+<payload_hash>-1285144287</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>786082cd475971103ffd379bd36d430d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891c6671f50000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Despesas das cidades do estado de São Paulo</target_name>
+<type>Catalog Item</type>
+<update_domain>global</update_domain>
+<update_guid>3cb1a5b516732110a8006b4d271daccc</update_guid>
+<update_guid_history>3cb1a5b516732110a8006b4d271daccc:-1285144287</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_3d2712b5473721103ffd379bd36d43dc</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item display_value="Despesas das cidades do estado de São Paulo"&gt;77df1d35477321103ffd379bd36d43a4&lt;/cat_item&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;true&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;mes&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Escolha um mês de 2018&lt;/question_text&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 19:30:56&lt;/sys_created_on&gt;&lt;sys_id&gt;3d2712b5473721103ffd379bd36d43dc&lt;/sys_id&gt;&lt;sys_mod_count&gt;6&lt;/sys_mod_count&gt;&lt;sys_name&gt;Escolha um mês de 2018&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_3d2712b5473721103ffd379bd36d43dc&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-07 14:35:20&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;5&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set/&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=3d2712b5473721103ffd379bd36d43dc"/&gt;&lt;fx_price action="delete_multiple" query="id=3d2712b5473721103ffd379bd36d43dc"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;3d2712b5473721103ffd379bd36d43dc&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 19:30:56&lt;/sys_created_on&gt;&lt;sys_id&gt;f6371ab5473721103ffd379bd36d43da&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 19:30:56&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;3d2712b5473721103ffd379bd36d43dc&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 19:30:56&lt;/sys_created_on&gt;&lt;sys_id&gt;b6371ab5473721103ffd379bd36d43d9&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 19:30:56&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1376317153</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>7c6082cd475971103ffd379bd36d4309</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930c763670000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Escolha um mês de 2018</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>a7e93d07d27321101f208fd926cc1b5a</update_guid>
+<update_guid_history>a7e93d07d27321101f208fd926cc1b5a:1376317153,ff350922f9b721105a3b927dbde227af:-1502866347,5d528f3d1ab7211069eb7eedcc0c4fe8:992521827,5bd7a6752e7721108ce274ea73c58725:-466467396,e1c76e7def3721109c0d3463a40ff919:-972317771,906f52b56d372110bf05c8ea71a8fbcd:1915116690,f2371ab59f372110bfce24f9a8f8f2dd:-972317771</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_add4cdee473721103ffd379bd36d4342</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>400</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:12</sys_created_on><sys_id>add4cdee473721103ffd379bd36d4342</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Abril</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_add4cdee473721103ffd379bd36d4342</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:14</sys_updated_on><text>Abril</text><value>4</value></question_choice><fx_price action="delete_multiple" query="id=add4cdee473721103ffd379bd36d4342"/></record_update>]]></payload>
+<payload_hash>119763238</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>7c6082cd475971103ffd379bd36d430c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b915f0b0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Abril</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>1f6c64baf033211070bbb4dafb526f30</update_guid>
+<update_guid_history>1f6c64baf033211070bbb4dafb526f30:119763238,bb28492200b721102fc15f8707a0ce5a:2109030100,a9054da24b772110adab0a1994f4cbef:119763238</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>DELETE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_parameters_e56a056647b721103ffd379bd36d430e</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="DELETE"><name>mes</name><rest_message_function display_value="Default GET">505989e247b721103ffd379bd36d4341</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:50:41</sys_created_on><sys_id>e56a056647b721103ffd379bd36d430e</sys_id><sys_mod_count>0</sys_mod_count><sys_name>mes</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_parameters_e56a056647b721103ffd379bd36d430e</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:50:41</sys_updated_on><type>string</type><value/></sys_rest_message_fn_parameters></record_update>]]></payload>
+<payload_hash>20981951</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>7c6082cd475971103ffd379bd36d430f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189280d10000000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>mes</target_name>
+<type>Variable Substitutions</type>
+<update_domain>global</update_domain>
+<update_guid>e25b05a6b7b72110b95986d7e296fb48</update_guid>
+<update_guid_history>e25b05a6b7b72110b95986d7e296fb48:20981951,e56a056677b72110a56fcc3d0a25490f:1552987211</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_04d409ae473721103ffd379bd36d43ce</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>300</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:06</sys_created_on><sys_id>04d409ae473721103ffd379bd36d43ce</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Março</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_04d409ae473721103ffd379bd36d43ce</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:11</sys_updated_on><text>Março</text><value>3</value></question_choice><fx_price action="delete_multiple" query="id=04d409ae473721103ffd379bd36d43ce"/></record_update>]]></payload>
+<payload_hash>979409414</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b06082cd475971103ffd379bd36d430b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b9154c60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Março</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>3a6c607ad7332110cf1d172f3c78c737</update_guid>
+<update_guid_history>3a6c607ad7332110cf1d172f3c78c737:979409414,4f2849228eb721105dab6f4516bb5555:-1882706798,4c0581eeb1372110156111acf06ae96e:979409414</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>DELETE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_9e8885e247b721103ffd379bd36d4336</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message"><sys_rest_message action="DELETE"><access>public</access><authentication_type>no_authentication</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><description/><name>Despesas SP</name><oauth2_profile/><protocol_name/><rest_endpoint>https://transparencia.tce.sp.gov.br</rest_endpoint><sys_class_name>sys_rest_message</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:45:57</sys_created_on><sys_id>9e8885e247b721103ffd379bd36d4336</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Despesas SP</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_9e8885e247b721103ffd379bd36d4336</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:57:50</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mutual_auth>false</use_mutual_auth></sys_rest_message></record_update>]]></payload>
+<payload_hash>421942883</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b06082cd475971103ffd379bd36d430e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18928116e0d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Despesas SP</target_name>
+<type>REST Message</type>
+<update_domain>global</update_domain>
+<update_guid>647cc1e69bb72110e1d141cc6794d0fc</update_guid>
+<update_guid_history>647cc1e69bb72110e1d141cc6794d0fc:421942883,d20c8566ceb72110707b8079b9986129:1057597015,b93ac5262bb72110991b3eb394562451:1371378743,261a49e2f8b72110c227086c829e52b7:-1787085211,545989e240b72110d31437da4643e144:-1552598724</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_9642b639477721103ffd379bd36d43e6</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;orgao&lt;/name&gt;&lt;order&gt;100&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Órgão&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:29:25&lt;/sys_created_on&gt;&lt;sys_id&gt;9642b639477721103ffd379bd36d43e6&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Órgão&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_9642b639477721103ffd379bd36d43e6&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:19&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=9642b639477721103ffd379bd36d43e6"/&gt;&lt;fx_price action="delete_multiple" query="id=9642b639477721103ffd379bd36d43e6"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;9642b639477721103ffd379bd36d43e6&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:29:26&lt;/sys_created_on&gt;&lt;sys_id&gt;e252fabd477721103ffd379bd36d4319&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 21:29:26&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;9642b639477721103ffd379bd36d43e6&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:29:26&lt;/sys_created_on&gt;&lt;sys_id&gt;2a52fabd477721103ffd379bd36d4318&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 21:29:26&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-2000106864</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b46082cd475971103ffd379bd36d430a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189269535b00000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Órgão</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>056de3926273211097b472447a38f6e1</update_guid>
+<update_guid_history>056de3926273211097b472447a38f6e1:-2000106864,ab75b6396e772110c7e3cbec311c5a12:-980336449,2a52fabd8677211093a07d667ceb9b1c:699302424</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sc_cat_item_77df1d35477321103ffd379bd36d43a4</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item"><sc_cat_item action="INSERT_OR_UPDATE"><access_type>restricted</access_type><active>true</active><availability>on_desktop</availability><billable>false</billable><category display_value="Services">109f0438c6112276003ae8ac13e7009d</category><checked_out/><cost>0</cost><custom_cart/><delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan><delivery_plan_script/><delivery_time>1970-01-03 00:00:00</delivery_time><description/><display_price_property>non_zero</display_price_property><entitlement_script/><flow_designer_flow/><fulfillment_automation_level>unspecified</fulfillment_automation_level><group/><hide_sp>false</hide_sp><icon/><ignore_price>true</ignore_price><image/><location/><mandatory_attachment>false</mandatory_attachment><meta/><mobile_hide_price>false</mobile_hide_price><mobile_picture/><mobile_picture_type>use_desktop_picture</mobile_picture_type><model/><name>Despesas das cidades do estado de São Paulo</name><no_attachment_v2>false</no_attachment_v2><no_cart>false</no_cart><no_cart_v2>true</no_cart_v2><no_delivery_time_v2>true</no_delivery_time_v2><no_order>false</no_order><no_order_now>false</no_order_now><no_proceed_checkout>false</no_proceed_checkout><no_quantity>false</no_quantity><no_quantity_v2>true</no_quantity_v2><no_search>false</no_search><no_wishlist_v2>false</no_wishlist_v2><omit_price>false</omit_price><order>0</order><ordered_item_link/><owner display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</owner><picture/><preview>JavaScript: popupOpenStandard("com.glideapp.servicecatalog_cat_item_view.do?v=1&amp;sysparm_id=77df1d35477321103ffd379bd36d43a4&amp;sysparm_preview=true", "summary");</preview><price>0</price><published_ref/><recurring_frequency/><recurring_price>0</recurring_price><request_method>submit</request_method><roles/><sc_catalogs>e0d08b13c3330100c8b837659bba8fb4</sc_catalogs><sc_ic_item_staging/><sc_ic_version/><sc_template/><short_description/><show_variable_help_on_load>false</show_variable_help_on_load><start_closed>false</start_closed><state/><sys_class_name>sc_cat_item</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>77df1d35477321103ffd379bd36d43a4</sys_id><sys_mod_count>3</sys_mod_count><sys_name>Despesas das cidades do estado de São Paulo</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sc_cat_item_77df1d35477321103ffd379bd36d43a4</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 15:00:14</sys_updated_on><taxonomy_topic/><template/><template_manager_roles/><type>item</type><use_sc_layout>true</use_sc_layout><vendor/><visible_bundle>true</visible_bundle><visible_guide>true</visible_guide><visible_standalone>true</visible_standalone><workflow/></sc_cat_item><sys_translated_text action="delete_multiple" query="documentkey=77df1d35477321103ffd379bd36d43a4"/><fx_price action="delete_multiple" query="id=77df1d35477321103ffd379bd36d43a4"/><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="BRL">BRL</currency><field>price</field><id>77df1d35477321103ffd379bd36d43a4</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>64b1ed35473321103ffd379bd36d4309</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 15:37:02</sys_updated_on><table>sc_cat_item</table><type>calculated</type></fx_price><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>recurring_price</field><id>77df1d35477321103ffd379bd36d43a4</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 15:37:02</sys_created_on><sys_id>6cb1ed35473321103ffd379bd36d430a</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 15:37:02</sys_updated_on><table>sc_cat_item</table><type>calculated</type></fx_price></record_update>]]></payload>
+<payload_hash>361327663</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b46082cd475971103ffd379bd36d430d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189269176900000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Despesas das cidades do estado de São Paulo</target_name>
+<type>Catalog Item</type>
+<update_domain>global</update_domain>
+<update_guid>857c27527d732110a860568651d5b467</update_guid>
+<update_guid_history>857c27527d732110a860568651d5b467:361327663,5a4a8eb97bf321109654548ed8b8c52d:-982378383,3cb1a5b516732110a8006b4d271daccc:-1285144287,b4b1a5b52f7321101a4267e4dcd48dc7:364223292</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_3177fabd477721103ffd379bd36d4358</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;num_empenho&lt;/name&gt;&lt;order&gt;300&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Núm. Empenho&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:52:02&lt;/sys_created_on&gt;&lt;sys_id&gt;3177fabd477721103ffd379bd36d4358&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;Núm. Empenho&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_3177fabd477721103ffd379bd36d4358&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:20&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=3177fabd477721103ffd379bd36d4358"/&gt;&lt;fx_price action="delete_multiple" query="id=3177fabd477721103ffd379bd36d4358"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;3177fabd477721103ffd379bd36d4358&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:52:02&lt;/sys_created_on&gt;&lt;sys_id&gt;b5877639477721103ffd379bd36d4341&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 21:52:02&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;3177fabd477721103ffd379bd36d4358&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 21:52:02&lt;/sys_created_on&gt;&lt;sys_id&gt;f9877639477721103ffd379bd36d4340&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 21:52:02&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-100727023</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b86082cd475971103ffd379bd36d4309</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892695376d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Núm. Empenho</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>896d2792727321101717d241f6f96b0d</update_guid>
+<update_guid_history>896d2792727321101717d241f6f96b0d:-100727023,b187b6f171b721108481f5b7547b1243:1652466942</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_aa15452247b721103ffd379bd36d43bf</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>900</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:45</sys_created_on><sys_id>aa15452247b721103ffd379bd36d43bf</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Setembro</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_aa15452247b721103ffd379bd36d43bf</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:41:17</sys_updated_on><text>Setembro</text><value>09</value></question_choice><fx_price action="delete_multiple" query="id=aa15452247b721103ffd379bd36d43bf"/></record_update>]]></payload>
+<payload_hash>1951351188</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b86082cd475971103ffd379bd36d430c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892800a0ea0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Setembro</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>7338492221b72110682bcc389795b6ae</update_guid>
+<update_guid_history>7338492221b72110682bcc389795b6ae:1951351188,21258522beb72110f778548996930d90:2099984016</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_parameters_c4bebd47477321103ffd379bd36d43c6</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="INSERT_OR_UPDATE"><name>cidade</name><rest_message_function display_value="Default GET">8e88bd83473321103ffd379bd36d43bb</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-07 14:56:07</sys_created_on><sys_id>c4bebd47477321103ffd379bd36d43c6</sys_id><sys_mod_count>1</sys_mod_count><sys_name>cidade</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_parameters_c4bebd47477321103ffd379bd36d43c6</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-07 15:02:07</sys_updated_on><type>string</type><value>guarulhos</value></sys_rest_message_fn_parameters></record_update>]]></payload>
+<payload_hash>740692935</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>b86082cd475971103ffd379bd36d430f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930dfe7d50000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>cidade</target_name>
+<type>Variable Substitutions</type>
+<update_domain>global</update_domain>
+<update_guid>c810c68b467321109d2744fb75186ef2</update_guid>
+<update_guid_history>c810c68b467321109d2744fb75186ef2:740692935,4cbe714b6f732110218328181fa823f0:-776920464</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_b874468f477321103ffd379bd36d43fd</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><condition/><description/><name>DespesasMrow</name><operation display_value="execute">execute</operation><script/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-07 15:21:18</sys_created_on><sys_id>b874468f477321103ffd379bd36d43fd</sys_id><sys_mod_count>0</sys_mod_count><sys_name>DespesasMrow</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_b874468f477321103ffd379bd36d43fd</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-07 15:21:18</sys_updated_on><type display_value="client_callable_script_include">client_callable_script_include</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>1491392071</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>bc608281479971103ffd379bd36d4367</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930f1776a0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table>DespesasMrow</table>
+<target_name>DespesasMrow</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>b074868f75732110d85d73c5b5026200</update_guid>
+<update_guid_history>b074868f75732110d85d73c5b5026200:1491392071</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>catalog_script_client_ae9bde8347f321103ffd379bd36d4357</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="catalog_script_client"&gt;&lt;catalog_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_catalog&gt;true&lt;/applies_catalog&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;applies_req_item&gt;true&lt;/applies_req_item&gt;&lt;applies_sc_task&gt;true&lt;/applies_sc_task&gt;&lt;applies_target_record&gt;false&lt;/applies_target_record&gt;&lt;applies_to&gt;item&lt;/applies_to&gt;&lt;cat_item display_value="Despesas das cidades do estado de São Paulo"&gt;77df1d35477321103ffd379bd36d43a4&lt;/cat_item&gt;&lt;cat_variable&gt;IO:820ba2b5477721103ffd379bd36d43e0&lt;/cat_variable&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field/&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;AOOP: Despesas Mrow&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onChange(control, oldValue, newValue, isLoading) {
+    if (isLoading || newValue == '') {
+        return;
+    }
+
+    //Type appropriate comment here, and begin script below
+    g_form.clearValue('info_despesas');
+    var clap = new GlideAjax("global.DespesasMrow");
+    clap.addParam('sysparm_name', 'puxarDados'); //puxar a função do Script Include
+    clap.addParam('sysparm_cidade', g_form.getValue('cidade'));
+    clap.addParam('sysparm_mes', g_form.getValue('mes'));
+    clap.getXML(democall);
+
+    function democall(response) {
+        var answer = response.responseXML.documentElement.getAttribute("answer");
+        alert(answer);
+        answer = JSON.parse(answer);
+        //alert(answer[0]);
+        var obj = (g_form.getValue('info_despesas').length != 0) ? JSON.parse(g_form.getValue('info_despesas')) : [];
+
+        //"?" = se sim
+        //":" = se não
+		
+		//AMBOS SÃO OPERADORES TERNÁRIOS
+
+        for (var i = 0; i &lt; 5; i++) {
+            obj.push({
+                orgao: answer[i].orgao,
+                evento: answer[i].evento,
+                num_empenho: answer[i].nr_empenho,
+                id_fornecedor: answer[i].id_fornecedor,
+                nome_fornecedor: answer[i].nm_fornecedor,
+                data_emissao_despesa: answer[i].dt_emissao_despesa,
+                valor_despesa: answer[i].vl_despesa
+
+            });
+        }
+
+        g_form.setValue('info_despesas', JSON.stringify(obj));
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;catalog_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-07 17:10:51&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;ae9bde8347f321103ffd379bd36d4357&lt;/sys_id&gt;&lt;sys_mod_count&gt;18&lt;/sys_mod_count&gt;&lt;sys_name&gt;AOOP: Despesas Mrow&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;catalog_script_client_ae9bde8347f321103ffd379bd36d4357&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-07 20:43:26&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;type&gt;onChange&lt;/type&gt;&lt;ui_type&gt;10&lt;/ui_type&gt;&lt;variable_set/&gt;&lt;view/&gt;&lt;/catalog_script_client&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1376276322</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>bc6082cd475971103ffd379bd36d4308</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189321862470000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>AOOP: Despesas Mrow</target_name>
+<type>Catalog Client Scripts</type>
+<update_domain>global</update_domain>
+<update_guid>672e870337b721102eb0d8c58638ded9</update_guid>
+<update_guid_history>672e870337b721102eb0d8c58638ded9:1376276322,622d8bcf4a77211012f7baadd1087205:-29145687,3d15cf878477211017da96584cc2b8b4:-1185210383,71c4030b127721101bc4037365f48cc0:-617884525,bbd307470477211078b506de5bcf8423:-1185210383,51934fc363772110b2c961107c3b58ec:-617884525,57734347017721106ea92bfcadf37d1d:-1289490676,3ca20347b47721106faf4a36c7dab9d0:-2098161258,78b14f8320772110843ac62398ab5f34:-1807060137,b6810347377721106944254f29a706ca:227870519,35300f43937721105b80c4fd09a73769:891586401,5a2f368fa737211031e1ae21de8dbbd4:-48762906,4d0e3e437e7721102604c3c3623f3b08:-205214751,65dd3acf0d3721103c2ea96abba8fb8d:-317548730,aa8bfa0763f3211021bb37c3643afd9b:1637299973,58aa7a8b9fb3211077a11f45b89fc495:418631493,dfce9a073af32110f00fb0f6895a4589:532174021,5cbdda0785f32110639636a3c3add6ac:1934444351,e18d968f45b321103cb4e665649df7ae:-1365763215</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_4205452247b721103ffd379bd36d4309</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>600</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:24</sys_created_on><sys_id>4205452247b721103ffd379bd36d4309</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Junho</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_4205452247b721103ffd379bd36d4309</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:24</sys_updated_on><text>Junho</text><value>6</value></question_choice><fx_price action="delete_multiple" query="id=4205452247b721103ffd379bd36d4309"/></record_update>]]></payload>
+<payload_hash>-1087714138</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>bc6082cd475971103ffd379bd36d430b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b9184280000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Junho</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>3d7c24ba2c332110837fcffa6ef7aef6</update_guid>
+<update_guid_history>3d7c24ba2c332110837fcffa6ef7aef6:-1087714138,153805e256b7211049eb018af0152f70:188964376,e8150d2e2d37211095f2ac1d821393eb:-1087714138</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_88b8c3b147f721103ffd379bd36d4309</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="INSERT_OR_UPDATE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Default GET</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name>Municípios [ Default GET ]</qualified_name><rest_endpoint>https://transparencia.tce.sp.gov.br/api/json/municipios</rest_endpoint><rest_message display_value="Municípios">c908437d47b721103ffd379bd36d4374</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 23:07:01</sys_created_on><sys_id>88b8c3b147f721103ffd379bd36d4309</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Default GET</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_88b8c3b147f721103ffd379bd36d4309</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 23:07:01</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+<payload_hash>-2139832999</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>bc6082cd475971103ffd379bd36d430e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891e0268300000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Default GET</target_name>
+<type>HTTP Method</type>
+<update_domain>global</update_domain>
+<update_guid>4cb8c3b119f72110355b354758d0000b</update_guid>
+<update_guid_history>4cb8c3b119f72110355b354758d0000b:-2139832999</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_820ba2b5477721103ffd379bd36d43e0</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item display_value="Despesas das cidades do estado de São Paulo"&gt;77df1d35477321103ffd379bd36d43a4&lt;/cat_item&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;true&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;cidade&lt;/name&gt;&lt;order&gt;200&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Escolha uma cidade&lt;/question_text&gt;&lt;read_only&gt;false&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference&gt;sys_rest_message&lt;/reference&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 20:58:33&lt;/sys_created_on&gt;&lt;sys_id&gt;820ba2b5477721103ffd379bd36d43e0&lt;/sys_id&gt;&lt;sys_mod_count&gt;3&lt;/sys_mod_count&gt;&lt;sys_name&gt;Escolha uma cidade&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_820ba2b5477721103ffd379bd36d43e0&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 19:43:35&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;5&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;advanced&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set/&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=820ba2b5477721103ffd379bd36d43e0"/&gt;&lt;fx_price action="delete_multiple" query="id=820ba2b5477721103ffd379bd36d43e0"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;820ba2b5477721103ffd379bd36d43e0&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 20:58:33&lt;/sys_created_on&gt;&lt;sys_id&gt;564ba639477721103ffd379bd36d4393&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 20:58:33&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;820ba2b5477721103ffd379bd36d43e0&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 20:58:33&lt;/sys_created_on&gt;&lt;sys_id&gt;9a4ba639477721103ffd379bd36d4392&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 20:58:33&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>1166144438</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f06082cd475971103ffd379bd36d430a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892794e3890000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Escolha uma cidade</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>334decaa6537211020b4318748c984a8</update_guid>
+<update_guid_history>334decaa6537211020b4318748c984a8:1166144438,eccd3f1241b32110d70819258f5a03a5:265052292,ce52cf3d6eb721102167ef82632f0607:-1350366010,164ba6391c7721105aed2a972836ba96:100918510</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_ef05452247b721103ffd379bd36d434d</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>700</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:30</sys_created_on><sys_id>ef05452247b721103ffd379bd36d434d</sys_id><sys_mod_count>2</sys_mod_count><sys_name>Julho</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_ef05452247b721103ffd379bd36d434d</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-06 14:18:28</sys_updated_on><text>Julho</text><value>7</value></question_choice><fx_price action="delete_multiple" query="id=ef05452247b721103ffd379bd36d434d"/></record_update>]]></payload>
+<payload_hash>-128417338</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f06082cd475971103ffd379bd36d430d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892b9195fc0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Julho</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>b67c64ba3c33211031dd0a43cde1ec36</update_guid>
+<update_guid_history>b67c64ba3c33211031dd0a43cde1ec36:-128417338,3938c1e240b72110512e18731824df67:438391386,fd15452241b72110cd68b8a4cbcd6eba:-128417338</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_2f1a3a3547b721103ffd379bd36d4398</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="item_option_new"&gt;&lt;item_option_new action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;attributes/&gt;&lt;cat_item/&gt;&lt;category/&gt;&lt;choice_direction&gt;down&lt;/choice_direction&gt;&lt;choice_field/&gt;&lt;choice_table/&gt;&lt;create_roles/&gt;&lt;default_html_value/&gt;&lt;default_value/&gt;&lt;delete_roles/&gt;&lt;delivery_plan/&gt;&lt;description/&gt;&lt;display_title&gt;false&lt;/display_title&gt;&lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;&lt;dynamic_default_value/&gt;&lt;dynamic_ref_qual/&gt;&lt;enable_also_request_for&gt;false&lt;/enable_also_request_for&gt;&lt;example_text/&gt;&lt;field/&gt;&lt;global&gt;false&lt;/global&gt;&lt;help_tag&gt;More information&lt;/help_tag&gt;&lt;help_text/&gt;&lt;hidden&gt;false&lt;/hidden&gt;&lt;include_none&gt;false&lt;/include_none&gt;&lt;instructions/&gt;&lt;layout&gt;normal&lt;/layout&gt;&lt;list_table/&gt;&lt;lookup_label/&gt;&lt;lookup_price/&gt;&lt;lookup_table/&gt;&lt;lookup_unique&gt;false&lt;/lookup_unique&gt;&lt;lookup_value/&gt;&lt;macro/&gt;&lt;macroponent/&gt;&lt;mandatory&gt;false&lt;/mandatory&gt;&lt;map_to_field&gt;false&lt;/map_to_field&gt;&lt;mask_use_confirmation&gt;false&lt;/mask_use_confirmation&gt;&lt;mask_use_encryption&gt;false&lt;/mask_use_encryption&gt;&lt;name&gt;data_emissao_despesa&lt;/name&gt;&lt;order&gt;600&lt;/order&gt;&lt;post_insert_script/&gt;&lt;price_if_checked&gt;0&lt;/price_if_checked&gt;&lt;pricing_implications&gt;false&lt;/pricing_implications&gt;&lt;published_ref/&gt;&lt;question_text&gt;Data de Emissão da Despesa&lt;/question_text&gt;&lt;read_only&gt;true&lt;/read_only&gt;&lt;read_roles/&gt;&lt;read_script/&gt;&lt;rec_lookup_price/&gt;&lt;rec_price_if_checked&gt;0&lt;/rec_price_if_checked&gt;&lt;record/&gt;&lt;record_producer_table/&gt;&lt;reference/&gt;&lt;reference_qual/&gt;&lt;reference_qual_condition/&gt;&lt;rich_text/&gt;&lt;roles_to_use_also_request_for/&gt;&lt;save_script&gt;&lt;![CDATA[/** This script is executed before the Record is generated
+* `current`- GlideRecord produced by Record Producer
+* Don't use `current.update()` or `current.insert()` as the record is generated by Record Producer
+* Don't use `current.setValue('sys_class_name', 'xxx')` as this will trigger reparent flow and can cause data loss
+* Avoid `current.setAbortAction()` and generate a separate record
+* Use `producer.var1` to access variables
+*/]]&gt;&lt;/save_script&gt;&lt;scale_max&gt;5&lt;/scale_max&gt;&lt;scale_min&gt;0&lt;/scale_min&gt;&lt;show_help&gt;false&lt;/show_help&gt;&lt;show_help_on_load&gt;false&lt;/show_help_on_load&gt;&lt;sp_widget/&gt;&lt;summary_macro/&gt;&lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:03:55&lt;/sys_created_on&gt;&lt;sys_id&gt;2f1a3a3547b721103ffd379bd36d4398&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;Data de Emissão da Despesa&lt;/sys_name&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;item_option_new_2f1a3a3547b721103ffd379bd36d4398&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 15:04:21&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;tooltip/&gt;&lt;type&gt;6&lt;/type&gt;&lt;ui_page/&gt;&lt;unique&gt;false&lt;/unique&gt;&lt;use_dynamic_default&gt;false&lt;/use_dynamic_default&gt;&lt;use_reference_qualifier&gt;simple&lt;/use_reference_qualifier&gt;&lt;validate_regex/&gt;&lt;variable_name/&gt;&lt;variable_set display_value="Informações de Despesas"&gt;e822f6bd477721103ffd379bd36d438a&lt;/variable_set&gt;&lt;variable_width/&gt;&lt;visibility&gt;1&lt;/visibility&gt;&lt;visible_bundle&gt;true&lt;/visible_bundle&gt;&lt;visible_guide&gt;true&lt;/visible_guide&gt;&lt;visible_standalone&gt;true&lt;/visible_standalone&gt;&lt;visible_summary&gt;true&lt;/visible_summary&gt;&lt;write_roles/&gt;&lt;/item_option_new&gt;&lt;sys_translated_text action="delete_multiple" query="documentkey=2f1a3a3547b721103ffd379bd36d4398"/&gt;&lt;fx_price action="delete_multiple" query="id=2f1a3a3547b721103ffd379bd36d4398"/&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;price_if_checked&lt;/field&gt;&lt;id&gt;2f1a3a3547b721103ffd379bd36d4398&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:03:55&lt;/sys_created_on&gt;&lt;sys_id&gt;733af6bd477721103ffd379bd36d431b&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:03:55&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;fx_price action="INSERT_OR_UPDATE"&gt;&lt;amount&gt;0&lt;/amount&gt;&lt;currency display_value="BRL"&gt;BRL&lt;/currency&gt;&lt;field&gt;rec_price_if_checked&lt;/field&gt;&lt;id&gt;2f1a3a3547b721103ffd379bd36d4398&lt;/id&gt;&lt;parent/&gt;&lt;reference_amount&gt;0&lt;/reference_amount&gt;&lt;reference_currency display_value="USD"&gt;USD&lt;/reference_currency&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-03 22:03:55&lt;/sys_created_on&gt;&lt;sys_id&gt;b73af6bd477721103ffd379bd36d431a&lt;/sys_id&gt;&lt;sys_mod_count&gt;0&lt;/sys_mod_count&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-03 22:03:55&lt;/sys_updated_on&gt;&lt;table&gt;item_option_new&lt;/table&gt;&lt;type&gt;calculated&lt;/type&gt;&lt;/fx_price&gt;&lt;/record_update&gt;</payload>
+<payload_hash>481668037</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f46082cd475971103ffd379bd36d4309</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>189269539940000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Data de Emissão da Despesa</target_name>
+<type>Variable</type>
+<update_domain>global</update_domain>
+<update_guid>556d2792107321107410cab70ee26237</update_guid>
+<update_guid_history>556d2792107321107410cab70ee26237:481668037,fd4a7e75e4b72110a653666b4f251663:1473984636,f73a3e7517b7211018d9e3bf78f90de4:-416176496</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_9225cde6477721103ffd379bd36d4315</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>1100</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:59</sys_created_on><sys_id>9225cde6477721103ffd379bd36d4315</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Novembro</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_9225cde6477721103ffd379bd36d4315</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:27:59</sys_updated_on><text>Novembro</text><value>11</value></question_choice><fx_price action="delete_multiple" query="id=9225cde6477721103ffd379bd36d4315"/></record_update>]]></payload>
+<payload_hash>1002842510</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f46082cd475971103ffd379bd36d430c</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18927f4749d0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Novembro</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>0535c52271b72110a8d02bb553234664</update_guid>
+<update_guid_history>0535c52271b72110a8d02bb553234664:1002842510</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_parameters_88be714b477321103ffd379bd36d43f1</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn_parameters"><sys_rest_message_fn_parameters action="INSERT_OR_UPDATE"><name>mes</name><rest_message_function display_value="Default GET">8e88bd83473321103ffd379bd36d43bb</rest_message_function><sys_class_name>sys_rest_message_fn_parameters</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-07 14:56:07</sys_created_on><sys_id>88be714b477321103ffd379bd36d43f1</sys_id><sys_mod_count>3</sys_mod_count><sys_name>mes</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_parameters_88be714b477321103ffd379bd36d43f1</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-07 15:02:13</sys_updated_on><type>string</type><value>5</value></sys_rest_message_fn_parameters></record_update>]]></payload>
+<payload_hash>-1771190162</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f46082cd475971103ffd379bd36d430f</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18930dffe760000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>mes</target_name>
+<type>Variable Substitutions</type>
+<update_domain>global</update_domain>
+<update_guid>dd10464b657321108d59be24fa22fa9f</update_guid>
+<update_guid_history>dd10464b657321108d59be24fa22fa9f:-1771190162,c4de7d472d732110e791e8e2e070fef1:644171862,b6beb547da732110da4b1a934238cf65:-1099044062,88be714b967321105f7bd5b3387296f2:644171862</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_security_acl_b26e4c2247b321103ffd379bd36d43d2</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl"><sys_security_acl action="INSERT_OR_UPDATE"><active>true</active><admin_overrides>true</admin_overrides><advanced>false</advanced><condition/><description/><name>DespCidadesSP</name><operation display_value="execute">execute</operation><script/><sys_class_name>sys_security_acl</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 17:28:38</sys_created_on><sys_id>b26e4c2247b321103ffd379bd36d43d2</sys_id><sys_mod_count>0</sys_mod_count><sys_name>DespCidadesSP</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_security_acl_b26e4c2247b321103ffd379bd36d43d2</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 17:28:38</sys_updated_on><type display_value="client_callable_script_include">client_callable_script_include</type></sys_security_acl></record_update>]]></payload>
+<payload_hash>-1263234491</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f8608281479971103ffd379bd36d4367</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892719537c0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table>DespCidadesSP</table>
+<target_name>DespCidadesSP</target_name>
+<type>Access Control</type>
+<update_domain>global</update_domain>
+<update_guid>3e6e08ee53b32110ac19eac866997fed</update_guid>
+<update_guid_history>3e6e08ee53b32110ac19eac866997fed:-1263234491</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>catalog_script_client_867d24ea473721103ffd379bd36d4370</name>
+<payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="catalog_script_client"&gt;&lt;catalog_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_catalog&gt;true&lt;/applies_catalog&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;applies_req_item&gt;true&lt;/applies_req_item&gt;&lt;applies_sc_task&gt;true&lt;/applies_sc_task&gt;&lt;applies_target_record&gt;false&lt;/applies_target_record&gt;&lt;applies_to&gt;item&lt;/applies_to&gt;&lt;cat_item display_value="Despesas das cidades do estado de São Paulo"&gt;77df1d35477321103ffd379bd36d43a4&lt;/cat_item&gt;&lt;cat_variable/&gt;&lt;condition/&gt;&lt;description/&gt;&lt;field/&gt;&lt;global&gt;true&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;AOOP: Cidades de SP&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onLoad() {
+    //Type appropriate comment here, and begin script below
+
+    var city = new GlideAjax('global.CidadesSP');
+    city.addParam('sysparm_name', 'consultaSP');
+    city.getXML(democall);
+
+    function democall(response) {
+
+        var answer = response.responseXML.documentElement.getAttribute("answer");
+        answer = JSON.parse(answer);
+        for (var i = 0; i &lt; answer.length; i++) {
+            g_form.addOption('cidade', answer[i].municipio, answer[i].municipio_extenso);
+        }
+    }
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;catalog_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-07-05 20:07:10&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;867d24ea473721103ffd379bd36d4370&lt;/sys_id&gt;&lt;sys_mod_count&gt;1&lt;/sys_mod_count&gt;&lt;sys_name&gt;AOOP: Cidades de SP&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="Global" source="global"&gt;global&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Global"&gt;global&lt;/sys_scope&gt;&lt;sys_update_name&gt;catalog_script_client_867d24ea473721103ffd379bd36d4370&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-07-05 21:47:04&lt;/sys_updated_on&gt;&lt;table/&gt;&lt;type&gt;onLoad&lt;/type&gt;&lt;ui_type&gt;10&lt;/ui_type&gt;&lt;variable_set/&gt;&lt;view/&gt;&lt;/catalog_script_client&gt;&lt;/record_update&gt;</payload>
+<payload_hash>-1698334919</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f86082cd475971103ffd379bd36d4308</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1892805eef60000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>AOOP: Cidades de SP</target_name>
+<type>Catalog Client Scripts</type>
+<update_domain>global</update_domain>
+<update_guid>ec99c52602b721101fa72e0b0cd10138</update_guid>
+<update_guid_history>ec99c52602b721101fa72e0b0cd10138:-1698334919,c9b274eec737211087ef40ebb9350c21:909253435</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>question_choice_342545ee473721103ffd379bd36d4328</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><order>1000</order><published_ref/><question display_value="Escolha um mês de 2018">3d2712b5473721103ffd379bd36d43dc</question><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:27:52</sys_created_on><sys_id>342545ee473721103ffd379bd36d4328</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Outubro</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>question_choice_342545ee473721103ffd379bd36d4328</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:27:52</sys_updated_on><text>Outubro</text><value>10</value></question_choice><fx_price action="delete_multiple" query="id=342545ee473721103ffd379bd36d4328"/></record_update>]]></payload>
+<payload_hash>-569132804</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f86082cd475971103ffd379bd36d430b</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18927f45add0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Outubro</target_name>
+<type>Question Choice</type>
+<update_domain>global</update_domain>
+<update_guid>9b258522acb721106973ec4d7b766596</update_guid>
+<update_guid_history>9b258522acb721106973ec4d7b766596:-569132804</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>DELETE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sys_rest_message_fn_505989e247b721103ffd379bd36d4341</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_rest_message_fn"><sys_rest_message_fn action="DELETE"><authentication_type>inherit_from_parent</authentication_type><basic_auth_password/><basic_auth_profile/><basic_auth_user/><content/><function_name>Default GET</function_name><http_method>get</http_method><lock>false</lock><oauth2_profile/><protocol_name/><qualified_name> [ Default GET ]</qualified_name><rest_endpoint>https://transparencia.tce.sp.gov.br/api/json/despesas/${cidade}/2018/${mes}</rest_endpoint><rest_message display_value="">9e8885e247b721103ffd379bd36d4336</rest_message><sys_class_name>sys_rest_message_fn</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-05 21:45:58</sys_created_on><sys_id>505989e247b721103ffd379bd36d4341</sys_id><sys_mod_count>1</sys_mod_count><sys_name>Default GET</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sys_rest_message_fn_505989e247b721103ffd379bd36d4341</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-05 21:50:37</sys_updated_on><use_basic_auth>false</use_basic_auth><use_mid_server/><use_mutual_auth>false</use_mutual_auth></sys_rest_message_fn></record_update>]]></payload>
+<payload_hash>-1078969586</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>f86082cd475971103ffd379bd36d430e</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>18928116d0f0000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Default GET</target_name>
+<type>HTTP Method</type>
+<update_domain>global</update_domain>
+<update_guid>a07cc1e681b7211046d00a80a3fbf1f9</update_guid>
+<update_guid_history>a07cc1e681b7211046d00a80a3fbf1f9:-1078969586,986a49e213b7211081b454f0621f07bd:-1213597340,505989e2f6b72110ecd8e4a392076143:531912021</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>item_option_new_set_e822f6bd477721103ffd379bd36d438a</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="item_option_new_set"><item_option_new_set action="INSERT_OR_UPDATE"><create_roles/><description/><display_title>false</display_title><internal_name>info_despesas</internal_name><layout>normal</layout><name/><order>100</order><read_roles/><set_attributes/><sys_class_name>item_option_new_set</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 21:29:03</sys_created_on><sys_id>e822f6bd477721103ffd379bd36d438a</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Informações de Despesas</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>item_option_new_set_e822f6bd477721103ffd379bd36d438a</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 21:29:03</sys_updated_on><title>Informações de Despesas</title><type>one_to_many</type><write_roles/></item_option_new_set></record_update>]]></payload>
+<payload_hash>-247925253</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>fc6082cd475971103ffd379bd36d430a</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891da8b6c40000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Informações de Despesas</target_name>
+<type>Variable Set</type>
+<update_domain>global</update_domain>
+<update_guid>4d42b6754777211085bc00058eee2c90</update_guid>
+<update_guid_history>4d42b6754777211085bc00058eee2c90:-247925253</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+<sys_update_xml action="INSERT_OR_UPDATE">
+<action>INSERT_OR_UPDATE</action>
+<application display_value="Global">global</application>
+<category>customer</category>
+<comments/>
+<name>sc_cat_item_category_1e4a8eb947f321103ffd379bd36d4327</name>
+<payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sc_cat_item_category"><sc_cat_item_category action="INSERT_OR_UPDATE"><sc_cat_item display_value="Despesas das cidades do estado de São Paulo">77df1d35477321103ffd379bd36d43a4</sc_cat_item><sc_category display_value="Services">109f0438c6112276003ae8ac13e7009d</sc_category><sys_class_name>sc_cat_item_category</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-07-03 18:34:23</sys_created_on><sys_id>1e4a8eb947f321103ffd379bd36d4327</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Services.Despesas das cidades do estado de São Paulo</sys_name><sys_package display_value="Global" source="global">global</sys_package><sys_policy/><sys_scope display_value="Global">global</sys_scope><sys_update_name>sc_cat_item_category_1e4a8eb947f321103ffd379bd36d4327</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-07-03 18:34:23</sys_updated_on></sc_cat_item_category></record_update>]]></payload>
+<payload_hash>1944465431</payload_hash>
+<remote_update_set display_value="AOOP: Desafio 2 - Mrow Cidades">386082cd475971103ffd379bd36d4308</remote_update_set>
+<replace_on_upgrade>false</replace_on_upgrade>
+<sys_created_by>admin</sys_created_by>
+<sys_created_on>2023-09-13 23:29:53</sys_created_on>
+<sys_id>fc6082cd475971103ffd379bd36d430d</sys_id>
+<sys_mod_count>0</sys_mod_count>
+<sys_recorded_at>1891d08cbf80000001</sys_recorded_at>
+<sys_updated_by>admin</sys_updated_by>
+<sys_updated_on>2023-09-13 23:29:53</sys_updated_on>
+<table/>
+<target_name>Services.Despesas das cidades do estado de São Paulo</target_name>
+<type>Catalog Item Category</type>
+<update_domain>global</update_domain>
+<update_guid>1a4a8eb9fff32110d9b8f823d433e52b</update_guid>
+<update_guid_history>1a4a8eb9fff32110d9b8f823d433e52b:1944465431</update_guid_history>
+<update_set display_value=""/>
+<view/>
+</sys_update_xml>
+</unload>
